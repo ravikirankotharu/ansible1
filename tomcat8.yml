@@ -74,11 +74,15 @@
       repo: https://github.com/ravikirankotharu/gameoflife.git
       dest: /opt/gof/
       clone: yes
-  - name: move the war file from /opt to webaps path
-    shell: mv /opt/gof/gameoflife/gameoflife.war /opt/tomcat/webapps/
+  - name: "move the war file from /opt to webaps path"
+    copy:
+      src: /opt/gof/gameoflife.war
+      dest: /opt/tomcat/webapps/
+      remote_src: yes
     notify: 
     - tomcat-8-restart
   handlers:
     - name: tomcat-8-restart
       service: 
         name: tomcat 
+        state: restarted
