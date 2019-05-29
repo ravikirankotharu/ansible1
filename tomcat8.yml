@@ -72,8 +72,7 @@
       clone: yes
   - name: move the war file from /opt to webaps path
     shell: mv /opt/gameoflife/gameoflife.war /opt/tomcat/webapps/
-  - name: changing permisssions for webapps 
-    shell: chmod 755 /opt/tomcat/webapps/gameoflife.war
+    dest: /opt/
     notify: 
     - tomcat-8-restart
   handlers:
