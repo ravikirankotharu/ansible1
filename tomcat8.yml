@@ -65,8 +65,10 @@
     template: 
       src: context.xml.j2
       dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
-  - name: creating a directory
-      shell: mkdir /opt/gof
+  - name: creating a folder
+    file:
+      path: /opt/gof
+      state: directory
   - name: Download gameoflife.war file
     git:
       repo: https://github.com/ravikirankotharu/gameoflife.git
